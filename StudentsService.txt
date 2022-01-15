@@ -1,0 +1,32 @@
+package com.example.StudentsCrud.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.StudentsCrud.domain.Students;
+import com.example.StudentsCrud.repository.StudentsRepository;
+
+@Service
+public class StudentsService {
+	
+	@Autowired
+    private StudentsRepository repo;
+public List<Students> listAll() {
+        return repo.findAll();
+    }
+    
+    public void save(Students std) {
+        repo.save(std);
+    }
+    
+    public Students   get(long id) {
+        return repo.findById(id).get();
+    }
+    
+    public void delete(long id) {
+        repo.deleteById(id);
+    }
+
+}
